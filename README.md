@@ -4,18 +4,20 @@ A Data Science and Machine Learning project aimed at identifying newly posted Ai
 
 ## 📌 Project Objective
 
-Explain what you were trying to achieve. For example:
-- Explore trends in [dataset]
-- Practice Python and data visualization
-- Find insights about [topic]
+- **Solve the "Cold-Start" Problem:** Develop a machine learning model capable of accurately assessing the likely quality of a newly listed Airbnb apartment (the "cold-start" problem) before it has accumulated any guest reviews.
+
+- **Predict High Evaluation:** Classify new listings as either "High-Potential" or "Standard" based on the probability of achieving an above-average overall rating.
+
+- **Identify Key Success Drivers:** Analyze and interpret which specific pre-review features are the strongest predictors of long-term guest satisfaction.
+
+- **Support Early Recommendations:** Create a predictive system that can be integrated into a recommendation engine to suggest likely high-quality, trustworthy listings to users immediately upon posting.
+
+- **Feature Engineering and Modeling:** Demonstrate a robust data science workflow, including data cleaning, feature engineering from raw listing data, and comparative analysis of various classification algorithms.
 
 ## 🧰 Tools & Technologies
 
-List the main tools you used:
-- Python (pandas, matplotlib, seaborn, etc.)
+- Python (pandas, numpy, matplotlib, seaborn, scikit-learn)
 - Jupyter Notebook
-- SQL (if used)
-- Git, GitHub
 
 ## 📊 Dataset
 
