@@ -1,6 +1,6 @@
-# Project Title
+# Airbnb Apartment Quality Predictor (Zero-Review Suggestion Engine)
 
-A short description of the project — 1–2 sentences explaining what it's about.
+A Data Science and Machine Learning project aimed at identifying newly posted Airbnb listings that are most likely to receive above-average guest evaluations. The model leverages property characteristics to proactively suggest high-quality accommodations to users when no reviews are yet available.
 
 ## 📌 Project Objective
 
