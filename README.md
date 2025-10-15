@@ -22,11 +22,10 @@ A Data Science and Machine Learning project aimed at identifying newly posted Ai
 ## 📊 Dataset
 
 Briefly describe the dataset:
-- Source (e.g., Kaggle, public API, government open data)
+- Source: https://insideairbnb.com/
 - Number of rows/columns
 - What kind of data it contains
 
-Optionally include a link.
 
 ## 🔍 Analysis Summary
 
