@@ -1,8 +1,6 @@
 # COSE DA FARE
-- una sola città? tante o tutte?
-- quali città prendere dati?
-  - sarebbe figo se potessi controllare se le mie previsioni si sono avverate o meno e quindi scegliere città che ha in almeno due snapshot le review scores
- 
+- solo new york
+- posso usare solo i dati più vecchi che sono disponibili sul sito!
 # DECISIONI INIZIALI
 Pros and Cons of Approaches:
 
