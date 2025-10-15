@@ -22,10 +22,11 @@ This mimics real deployment and strengthens your portfolio (e.g., "Achieved 75% 
 ## My CHOICE
 Start with one city: New York City (NYC). Here's why:
 
-Rich Historical Data: NYC has the most extensive archives on Inside Airbnb—over 100 snapshots since 2015, with quarterly updates. This gives you plenty of temporal data for training/validation (e.g., use 2023-2024 for training, 2025 snapshots for testing predictions against real reviews). Other cities like London or LA have good history too, but NYC edges out with sheer volume and diversity.
 High Relevance and Scale: ~40k-50k listings per snapshot, diverse neighborhoods (Manhattan vs. Brooklyn), and real-world challenges (e.g., regulations post-2023 reduced listings, which you can analyze). It's a benchmark city in Airbnb research, making your work comparable to papers/blogs.
 Portfolio Appeal: A focused NYC project lets you showcase end-to-end skills (data cleaning, EDA, modeling, deployment via Streamlit/Flask). You can add visuals like maps (using Folium/Geopandas) of predicted high-potential areas. Mention expansion potential: "Future work: Adapt model to LA/SF for cross-market comparison."
 Practicality: Data is free, well-documented, and includes geo-features for spatial analysis (e.g., distance to subways). Avoid smaller cities (e.g., Asheville) with sparse data/history.
+
+ALSO focus on 3 snapshots for avaiability for free and where there is the variable review scores
 
 ## variabile target
 Use review data to label listings as "High-Potential" (e.g., average rating > 4.5/5 or above median) or "Standard" for listings with sufficient reviews (e.g., ≥5 reviews to ensure reliable averages).
