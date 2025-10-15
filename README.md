@@ -21,8 +21,8 @@ A Data Science and Machine Learning project aimed at identifying newly posted Ai
 
 ## 📊 Dataset
 
-Briefly describe the dataset:
 - Source: https://insideairbnb.com/
+-New york city on 04 November, 2024 - 04 December, 2024 - 03 January, 2025
 - Number of rows/columns
 - What kind of data it contains
 
