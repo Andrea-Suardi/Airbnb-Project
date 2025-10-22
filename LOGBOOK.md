@@ -20,3 +20,5 @@ Pros and Cons of Approaches:
 
 # STEP
 - Creare virtual environemnt for python
+
+- amsterdam 2018 - problemi colonna 87
