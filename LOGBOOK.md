@@ -14,7 +14,7 @@ Pros and Cons of Approaches:
 
 ## My CHOICE
 - One city
-- NEW YORK CITY:
+- NEW YORK CITY: why between all cities should i choose in general new york city?
 - ANNO: 2022 e check su 2024
   - Data Volume: ~40k+ listings (pre-LL18, robust market post-COVID recovery), ~8k-12k zero-review for predictions, ~20k+ reviewed (≥5 reviews) for training—plenty for splits (e.g., 16k train, 4k internal test). Avoids small post-LL18 datasets (e.g., Nov 2024-Jan 2025: ~10k-11k total, fewer zero-review/short-term).
   - Recency Balance: Closer to hindsight tests (Sep 2024-Jan 2025: 2.5-2.75 years gap) than 2020/2021, minimizing drift (e.g., amenities/pricing stable post-2021). 2020 (Mar: ~42k listings but COVID-low activity, sparse reviews) or 2021 (Jun: ~40k but uneven recovery) risks outdated features (e.g., fewer "contactless check-in").
@@ -26,11 +26,19 @@ Hindsight Test Snapshots: Use Sep 05 2024 (primary, immediate post-LL18 enforcem
 
 post-Local Law 18 (LL18, enforced Sep 5, 2023, banning most short-term rentals <30 days, causing ~80-90% drop in short-term listings)
 
+## DATI
+https://www.kaggle.com/datasets/konradb/inside-airbnb-netherlands
+https://www.kaggle.com/datasets/laibaanwer/airbnb-amsterdam-dataset
+https://www.kaggle.com/datasets/rhonarosecortez/new-york-airbnb-open-data?select=listings.csv
+https://www.kaggle.com/datasets/tharunponnaganti/airbnb-new-york-city-with-106-features
+https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc?select=reviews+2.csv
+https://www.kaggle.com/datasets/arthbr11/new-york-city-airbnb-open-data?select=listings.csv
 
 ## variabile target
 - how to define the target? regression or classification?
 
 # STEP
+- quali osservazioni considerare? tutte quelle con almeno 1 recensione o almeno 5?
 - Creare virtual environemnt for python
 
 - amsterdam 2018 - problemi colonna 87
