@@ -60,7 +60,7 @@ A few lines reflecting on what you learned during the project:
 
 ## 🪪 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the 
 
 
 
