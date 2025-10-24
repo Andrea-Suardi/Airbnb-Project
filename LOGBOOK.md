@@ -1,6 +1,6 @@
 # COSE DA FARE
 - usare altri dataset a disposizione per training? neighbouroud
-- seguire schema metodologia --> analytical approach
+- seguire schema metodologia --> analytical approach 
 
   
 # COSE FATTE
@@ -20,9 +20,31 @@ Improved User and Host Retention: Better recommendations reduce churn (e.g., gue
 Competitive Moat and Market Expansion: Solving cold-starts builds defensibility—hard for clones to replicate dense, quality networks (e.g., Airbnb outlasted Wimdu by focusing on superior experiences). It enables faster international scaling (e.g., bootstrapping Europe via events/subsidies) and entry into niches, increasing consumer surplus (up to 6%) through variety and efficient learning. Overall welfare gains (4-5%) stem from social learning (up to 5% of consumer benefits), price reductions, and more listings.
 - FONTI :
   - https://andrewchen.com/wp-content/uploads/2022/01/ColdStartProb_9780062969743_AS0928_cc20_Final.pdf
-  - https://reginaseibel.github.io/publication/ratings/ratings.pdf 
+  - https://reginaseibel.github.io/publication/ratings/ratings.pdf
 
-# DECISIONI INIZIALI
+# ANALYTICAL APPROACH
+- Develop a machine learning model capable of Classifying new listings as either "High-Potential" or "Standard" based on the probability of achieving an above-average overall rating. So a binary classification task
+  - i choose binary classification over other possibilities in order to have a clear and simple recommendation for customers
+- how to define the target?
+  - options:
+    - above observed average
+    - above a certain observed percentile
+    - max value
+    - Fixed Threshold (e.g., >4.7
+  - I choose above 75th percentile of observed distribution of review score average for these reasons:
+    - right compromise between including enough listings and excluding not really top listings
+    - Robust to Skew: Percentile handles left-skewed ratings (common in Airbnb, where ~80% are >4.0 due to guest leniency), unlike mean-based.
+    - If we wanted to be more strict, we should increase the percentile so that only really top likely listings are recommended as that
+    - Clear, data-driven definition (“Top 25% rated listings”) is easy to explain and ties to recommendation goals (highlighting elite listings).
+ 
+- Choose evaluation metric to maximize:
+  - Objective: The recommendation engine should prioritize new listings likely to be high-quality (High-Potential) to build user trust and drive bookings. False positives (predicting Standard listings as High-Potential) risk recommending low-quality stays, eroding trust and satisfaction. False negatives (missing High-Potential listings) reduce variety but are less harmful, as other reviewed listings can fill recommendations
+  - I choose precision for these reasons:
+    - The recommendation engine prioritizes user trust—recommending a low-quality listing (false positive) risks negative guest experiences, reducing bookings and platform reputation. Precision ensures most predicted High-Potential listings are truly high-quality (>4.7, top 25%). Research on platforms like Airbnb emphasizes minimizing bad recommendations to maintain trust (e.g., avoiding “zeroes” or poor matches).
+    -   Precision is intuitive (“X% of recommended new listings were high-quality”) and ties directly to business value (trustworthy recommendations drive bookings).
+
+
+# DATA REQUIREMENT
 ## QUALI E QUANTE CITTA?
 Pros and Cons of Approaches:
 
@@ -61,10 +83,12 @@ Why Not Other Years?:
 2021 (June): Recovery phase, ~40k listings, but still volatile (fewer reviews than 2022). Similar ~4-year gap = slightly worse attrition.
 2024-2025 (Nov/Dec/Jan): Post-LL18, ~10k-11k listings, skewed to long-term (14.4% short-term). Too small for robust training; short gaps (~1-3 months) yield sparse reviews (~1-2 per listing).
 
-## DATI
+# DATA COLLECTION
 - [Kaggle - 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
 - [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/)
-## variabile target
-- how to define the target? regression or classification?
+
+
+# DATA REQUIREMENT
+- quali dati per training usare? >0 reviews? >4?
 
 
