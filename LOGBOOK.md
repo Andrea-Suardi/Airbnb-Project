@@ -18,8 +18,9 @@
   - Increased Revenue and Bookings: Unreviewed listings see 24% lower bookings and 25% less revenue, contributing to significant welfare losses (estimated at millions platform-wide). Policies like fee waivers for new listings (to encourage trials) could boost occupancy by 6-7%, listings by up to 7%, and overall revenue by 0.2-4.4% through better matching and variety. For Airbnb, this means faster monetization of new inventory, higher transaction volumes (e.g., billions in bookings), and premium pricing potential as networks densify.
 Improved User and Host Retention: Better recommendations reduce churn (e.g., guests abandoning due to limited options) and enhance satisfaction via "magic moments" (positive surprises from high-quality new finds). Hosts benefit from quicker reviews and earnings, lowering exit rates and encouraging upgrades (e.g., from airbeds to luxury stays), cycling into stronger networks. This fosters loyalty, viral growth (e.g., referrals), and higher Net Promoter Scores.
 Competitive Moat and Market Expansion: Solving cold-starts builds defensibility—hard for clones to replicate dense, quality networks (e.g., Airbnb outlasted Wimdu by focusing on superior experiences). It enables faster international scaling (e.g., bootstrapping Europe via events/subsidies) and entry into niches, increasing consumer surplus (up to 6%) through variety and efficient learning. Overall welfare gains (4-5%) stem from social learning (up to 5% of consumer benefits), price reductions, and more listings.
-FONTI : https://andrewchen.com/wp-content/uploads/2022/01/ColdStartProb_9780062969743_AS0928_cc20_Final.pdf
-https://reginaseibel.github.io/publication/ratings/ratings.pdf 
+- FONTI :
+  - https://andrewchen.com/wp-content/uploads/2022/01/ColdStartProb_9780062969743_AS0928_cc20_Final.pdf
+  - https://reginaseibel.github.io/publication/ratings/ratings.pdf 
 
 # DECISIONI INIZIALI
 ## QUALI E QUANTE CITTA?
