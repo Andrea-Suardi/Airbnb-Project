@@ -18,7 +18,7 @@ A Data Science and Machine Learning project aimed at identifying newly posted Ai
 
 - Python (pandas, numpy, matplotlib, seaborn, scikit-learn)
 - Jupyter Notebook
-- Generative AI (Grok, Gemini, DeepSeek)
+- Generative AI (Grok, Gemini, DeepSeek, Claude)
 
 ## 📊 Dataset
 
