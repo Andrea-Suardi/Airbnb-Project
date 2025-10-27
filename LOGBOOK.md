@@ -1,5 +1,4 @@
 # COSE DA FARE
-- usare altri dataset a disposizione per training? neighbouroud
 - seguire schema metodologia --> analytical approach 
 
   
@@ -73,7 +72,7 @@ Hindsight Fit: ~3-year gap to 2025 yields 1,423 validatables (likely 10-50 revie
 
 
 Why 2025 Hindsight?:
-
+- ma è giusto chiamarlo HINDsight?
 Latest snapshot (e.g., March/June/Sep 2025) maximizes reviews. 1,423 samples ensure reliable metrics. Use Sep 05 2024 as backup if 2025 data has issues (e.g., missing review_scores_rating).
 
 
