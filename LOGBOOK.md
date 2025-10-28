@@ -1,6 +1,8 @@
 # COSE DA FARE
-- seguire schema metodologia --> data requirement (quali osservazioni tenere?
-- data collection 2023? rifare scelta!!
+- seguire schema metodologia
+- leggi data requirement metodologia genenrale
+-  passa a data collection
+  - data collection 2023? rifare scelta!!
 - quali osservazioni considerare? tutte quelle con almeno 1 recensione o almeno 5?
 - look if someone else tried to solve this problem
 
@@ -33,11 +35,14 @@ Competitive Moat and Market Expansion: Solving cold-starts builds defensibility�
     - above a certain observed percentile
     - max value
     - Fixed Threshold (e.g., >4.7
-  - I choose above 75th percentile of observed distribution of review score average for these reasons:
+      - it looks that if overall rating is >= 4.8 you meet one of requisite for becoming superhost (https://www.airbnb.com/help/article/829)
+  - I choose an hybrid criterium: above 75th percentile of observed distribution of review score average AND equal or above 4.8 for these reasons:
     - right compromise between including enough listings and excluding not really top listings
-    - Robust to Skew: Percentile handles left-skewed ratings (common in Airbnb, where ~80% are >4.0 due to guest leniency), unlike mean-based.
+    - relative threshold is Robust to Skew: Percentile handles left-skewed ratings (common in Airbnb, where ~80% are >4.0 due to guest leniency), unlike mean-based.
     - If we wanted to be more strict, we should increase the percentile so that only really top likely listings are recommended as that
-    - Clear, data-driven definition (“Top 25% rated listings”) is easy to explain and ties to recommendation goals (highlighting elite listings).
+    - Domain Relevance: Ties predictions to Airbnb's real-world quality benchmark—Superhosts must maintain ≥4.8 overall rating. in case the 75th percentile is lower than 4.8 we will restrict more on this really high quality listings that pass airbnb quality benchmark
+    - in this way we don't have a fixed threshold alone that could result in more lisitngs considered as high potential while we prefer a more conservative approach focusing just on top listings to avoid recommend a not high quality listing
+    - 
  
 - **Choose evaluation metric to maximize**
   - Objective: The recommendation engine should prioritize new listings likely to be high-quality (High-Potential) to build user trust and drive bookings. False positives (predicting Standard listings as High-Potential) risk recommending low-quality stays, eroding trust and satisfaction. False negatives (missing High-Potential listings) reduce variety but are less harmful, as other reviewed listings can fill recommendations
@@ -65,8 +70,24 @@ Pros and Cons of Approaches:
 - It would be better to look at data after covid lockdown that reduced bookings/reviews
 - For the data for prospective evaluation choose a recent year but not too far so i can find the same listings that had no enough reviews in the older data i will use for model development
 
-## quali dati per training usare?
->0 reviews? >4?
+## deciding which listings to include in a training set based on their number of reviews
+- OPTIONS
+  - Fixed Threshold
+    -  Include listings with ≥N reviews, where N is set via domain knowledge (e.g., ≥5 for reliability, as Airbnb ratings with <5 are noisy and affect averages more per community analyses; ≥10 for stricter stability in ML models) 
+  - Weighted Inclusion: Include all listings with ≥1 review, but weight samples by review count during training --> could be easily used with BOOSTRAP STRATEGY
+  - Percentile: Include top X% of listings by review count
+ 
+  - CHOICE:
+    - STEP 1: Start with Domain Knowledge (Before Data): Default to ≥5 reviews  
+      - Yang, Y. (2024). Predicting US Airbnb Listing Prices by Machine Learning Models. Highlights in Business, Economics and Management, 24, 1408-1417. https://doi.org/10.54097/m187nw17
+      - listings with ≥5 have more stable/higher averages; <5 impacts more due to volatility and since the mean is not robust to outliers. For my recommendation engine goal, reliable labels are key to avoid predicting on unstable averages.
+
+  - Step 2: Explore Data to Confirm/Refine (After Initial Look): Run quick analyses on your June 2022 listings.csv.gz (no leakage risk for threshold). Focus on:
+    - Distribution: Histogram of number_of_reviews (expect median ~5-10, long tail).
+    - Stability: Plot avg rating mean/variance by review bins.
+    - Sample Impact: Compute % listings retained at thresholds (e.g., ≥3: ~80%, ≥10: ~50%).
+    - Decision Criteria: If variance drops sharply after 5 reviews (e.g., var <0.1), stick with ≥5. If high variance persists to 10, increase. Retain ≥50-70% samples (~6,000-8,000) for robust training.
+    - STEP 3: OPTIONAL tune this choice as an hyperparameter
 
 # DATA COLLECTION
 - after a brief research i found out that i could collect data for this project from Kaggle and from Inside Airbnb
@@ -90,7 +111,7 @@ Hindsight Fit: ~3-year gap to 2025 yields 1,423 validatables (likely 10-50 revie
 
 
 Why 2025 Hindsight?:
-- ma è giusto chiamarlo HINDsight?
+- ma è giusto chiamarlo HINDsight? ---> no it's prospective evaluation!
 Latest snapshot (e.g., March/June/Sep 2025) maximizes reviews. 1,423 samples ensure reliable metrics. Use Sep 05 2024 as backup if 2025 data has issues (e.g., missing review_scores_rating).
 
 
@@ -101,6 +122,9 @@ Why Not Other Years?:
 2024-2025 (Nov/Dec/Jan): Post-LL18, ~10k-11k listings, skewed to long-term (14.4% short-term). Too small for robust training; short gaps (~1-3 months) yield sparse reviews (~1-2 per listing).
 # DATA PREPARATION
 - USARE geojson per mappe
-- 
+
+## Explore Data to Confirm/Refine NUMBER OF REVIEWS THRESHOLD CHOICE
+see data requirement section
+
 
 
