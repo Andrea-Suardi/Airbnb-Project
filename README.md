@@ -22,8 +22,9 @@ A Data Science and Machine Learning project aimed at identifying newly posted Ai
 
 ## Dataset
 
-- New york city June 2022 and October 2025
+- New york city June 2022 for MODEL DEVELOPMENT
   - [Kaggle - 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
+- October 2025 for Prospective evaluation
   - [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/) 
 - Number of rows/columns
 - What kind of data it contains
