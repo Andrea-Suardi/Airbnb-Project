@@ -1,10 +1,12 @@
 # COSE DA FARE
-- seguire schema metodologia --> analytical approach 
+- seguire schema metodologia --> data requirement (quali osservazioni tenere?
+- data collection 2023? rifare scelta!!
+- quali osservazioni considerare? tutte quelle con almeno 1 recensione o almeno 5?
+- look if someone else tried to solve this problem
 
   
 # COSE FATTE
-- quali osservazioni considerare? tutte quelle con almeno 1 recensione o almeno 5?
-- Creare virtual environemnt for python
+- Creare virtual environment for python
 - controlli di attrition tra 2022 e 2025
 
 # RESEARCH QUESTION
@@ -22,9 +24,10 @@ Competitive Moat and Market Expansion: Solving cold-starts builds defensibility�
   - https://reginaseibel.github.io/publication/ratings/ratings.pdf
 
 # ANALYTICAL APPROACH
-- Develop a machine learning model capable of Classifying new listings as either "High-Potential" or "Standard" based on the probability of achieving an above-average overall rating. So a binary classification task
-  - i choose binary classification over other possibilities in order to have a clear and simple recommendation for customers
-- how to define the target?
+- **WHICH TYPE OF PREDICTIVE TASK?**
+  - Develop a machine learning model capable of Classifying new listings as either "High-Potential" or "Standard" based on the probability of achieving an above-average overall rating. So a binary classification task
+  - i choose binary classification over other options (regression or multi-class classification) in order to have a clear and simple recommendation for customers
+- **how to define the target?**
   - options:
     - above observed average
     - above a certain observed percentile
@@ -36,28 +39,43 @@ Competitive Moat and Market Expansion: Solving cold-starts builds defensibility�
     - If we wanted to be more strict, we should increase the percentile so that only really top likely listings are recommended as that
     - Clear, data-driven definition (“Top 25% rated listings”) is easy to explain and ties to recommendation goals (highlighting elite listings).
  
-- Choose evaluation metric to maximize:
+- **Choose evaluation metric to maximize**
   - Objective: The recommendation engine should prioritize new listings likely to be high-quality (High-Potential) to build user trust and drive bookings. False positives (predicting Standard listings as High-Potential) risk recommending low-quality stays, eroding trust and satisfaction. False negatives (missing High-Potential listings) reduce variety but are less harmful, as other reviewed listings can fill recommendations
   - I choose precision for these reasons:
     - The recommendation engine prioritizes user trust—recommending a low-quality listing (false positive) risks negative guest experiences, reducing bookings and platform reputation. Precision ensures most predicted High-Potential listings are truly high-quality (>4.7, top 25%). Research on platforms like Airbnb emphasizes minimizing bad recommendations to maintain trust (e.g., avoiding “zeroes” or poor matches).
     -   Precision is intuitive (“X% of recommended new listings were high-quality”) and ties directly to business value (trustworthy recommendations drive bookings).
 
-
+- **EXTRA**: if i find data of different periods i can use them to check if my predictions were correct (prospective evaluation)
 # DATA REQUIREMENT
 ## QUALI E QUANTE CITTA?
 Pros and Cons of Approaches:
 
-- One City: Simplest for a personal project. Allows deep feature engineering, experimentation (e.g., XGBoost, neural nets, NLP on descriptions), and clear storytelling in your portfolio. You can focus on city-specific nuances (e.g., neighborhoods, regulations). Data volume is manageable—e.g., NYC has 40k+ listings per snapshot, enough for robust training without overwhelming compute. Easy to validate predictions using multiple temporal extracts.
+- One City: Simplest for a personal project. Allows deep feature engineering, experimentation (e.g., XGBoost, neural nets, NLP on descriptions), and clear storytelling in your portfolio. You can focus on city-specific nuances (e.g., neighborhoods, regulations). Data volume is manageable
 - Multiple Cities Separately: Builds separate models per city. Good if you want to compare markets (e.g., how features like "proximity to landmarks" matter more in tourist-heavy cities). Shows scalability in your portfolio but increases workload (e.g., handling varying data quality, regulations like NYC's strict short-term rental laws). Use if you have time for 2-3 cities.
 - All Cities Together: Pool data into one model, adding "city" as a categorical feature (or embeddings for similarity). Pros: More data (millions of listings), potentially better generalization. Cons: Markets differ wildly (e.g., pricing in Tokyo vs. Austin), leading to noisier models. Risk of confounding factors like currency, language, or seasonal tourism. Not ideal for cold-start validation across cities unless you normalize heavily.
+
 
 ## QUALI ANNI?
 - Idea is that i predict future average review score and then i look at future data to see how much error i made
 
 
 ## My CHOICE
-- One city
-- NEW YORK CITY: why between all cities should i choose in general new york city?
+- I decide just to build the model on one city - it would be interesting to build models for different cities and then compare results
+- NEW YORK CITY: why between all cities should i choose in general new york city? potentially it has bigger dataset for number of observations
+- It would be better to look at data after covid lockdown that reduced bookings/reviews
+- For the data for prospective evaluation choose a recent year but not too far so i can find the same listings that had no enough reviews in the older data i will use for model development
+
+## quali dati per training usare?
+>0 reviews? >4?
+
+# DATA COLLECTION
+- after a brief research i found out that i could collect data for this project from Kaggle and from Inside Airbnb
+- I downloaded different snapshots of Airbnb listings in NYC: 2022-2023-2024-2025
+  - [Kaggle - June 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
+  - 2023???
+  - [Inside Airbnb - November 2024 data](https://insideairbnb.com/get-the-data/)
+  - [Inside Airbnb - OCTOBER 2025 data](https://insideairbnb.com/get-the-data/)
+
 - ANNO: june 2022 e check su october 2025
   - WHY?
     - Attrition Rate between 2025 and 2022 of less than 5 reviews listings: 47.59% (Persistents: 9321 out of 17785 of 2022)
@@ -78,16 +96,11 @@ Latest snapshot (e.g., March/June/Sep 2025) maximizes reviews. 1,423 samples ens
 
 Why Not Other Years?:
 
-2020 (March): COVID lockdown reduced bookings/reviews; ~42k listings but sparse activity (low number_of_reviews). ~4-5 year gap = higher attrition (~70-80%).
+2020 (March): COVID lockdown ; ~42k listings but sparse activity (low number_of_reviews). ~4-5 year gap = higher attrition (~70-80%).
 2021 (June): Recovery phase, ~40k listings, but still volatile (fewer reviews than 2022). Similar ~4-year gap = slightly worse attrition.
 2024-2025 (Nov/Dec/Jan): Post-LL18, ~10k-11k listings, skewed to long-term (14.4% short-term). Too small for robust training; short gaps (~1-3 months) yield sparse reviews (~1-2 per listing).
-
-# DATA COLLECTION
-- [Kaggle - 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
-- [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/)
-
-
-# DATA REQUIREMENT
-- quali dati per training usare? >0 reviews? >4?
+# DATA PREPARATION
+- USARE geojson per mappe
+- 
 
 
