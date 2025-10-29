@@ -1,12 +1,3 @@
-
-- leggi data requirement metodologia genenrale
-
-
-  
-# COSE FATTE
-- Creare virtual environment for python
-- controlli di attrition tra 2022 e 2025
-
 # RESEARCH QUESTION
 - Solve the "Cold-Start" Problem: assessing the likely quality of a newly listed Airbnb apartment (the "cold-start" problem) before it has accumulated enough guest reviews in order to build a recommendation engine to suggest likely high-quality, trustworthy listings to users immediately upon posting.
   - The cold-start problem refers to the challenge of evaluating and recommending new items (in this case, Airbnb listings) when they lack historical data, such as guest reviews. For Airbnb, a new apartment listing starts with zero reviews, making it difficult for the platform's recommendation engine to assess its quality or trustworthiness. Without reviews, algorithms struggle to infer attributes like cleanliness, location appeal, host reliability, or overall value, leading to under-recommendation of potentially high-quality listings. This creates a feedback loop: low visibility reduces bookings, delaying reviews and perpetuating the issue. Solving this by predicting "likely high-quality" listings (e.g., via features like price, amenities, photos, host profile, or location data) enables the recommendation system to suggest them immediately, bridging the gap until organic reviews accumulate
@@ -114,6 +105,9 @@ Pros and Cons of Approaches:
   - 2023???
   - [Inside Airbnb - November 2024 data](https://insideairbnb.com/get-the-data/)
   - [Inside Airbnb - OCTOBER 2025 data](https://insideairbnb.com/get-the-data/)
+ 
+- created virtual environment for python for this project
+- CHECKS (attrition,...) to decide which year choose
 
 - ANNO: june 2022 e check su october 2025
   - WHY?
