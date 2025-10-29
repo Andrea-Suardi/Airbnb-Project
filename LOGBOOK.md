@@ -1,10 +1,6 @@
-# COSE DA FARE
-- seguire schema metodologia
+
 - leggi data requirement metodologia genenrale
--  passa a data collection
-  - data collection 2023? rifare scelta!!
-- quali osservazioni considerare? tutte quelle con almeno 1 recensione o almeno 5?
-- look if someone else tried to solve this problem
+
 
   
 # COSE FATTE
@@ -12,14 +8,29 @@
 - controlli di attrition tra 2022 e 2025
 
 # RESEARCH QUESTION
-- Solve the "Cold-Start" Problem: assessing the likely quality of a newly listed Airbnb apartment (the "cold-start" problem) before it has accumulated any guest reviews in order to build a recommendation engine to suggest likely high-quality, trustworthy listings to users immediately upon posting.
-- WHY AIRBNB COULD BE INTERESTED IN THIS?
+- Solve the "Cold-Start" Problem: assessing the likely quality of a newly listed Airbnb apartment (the "cold-start" problem) before it has accumulated enough guest reviews in order to build a recommendation engine to suggest likely high-quality, trustworthy listings to users immediately upon posting.
   - The cold-start problem refers to the challenge of evaluating and recommending new items (in this case, Airbnb listings) when they lack historical data, such as guest reviews. For Airbnb, a new apartment listing starts with zero reviews, making it difficult for the platform's recommendation engine to assess its quality or trustworthiness. Without reviews, algorithms struggle to infer attributes like cleanliness, location appeal, host reliability, or overall value, leading to under-recommendation of potentially high-quality listings. This creates a feedback loop: low visibility reduces bookings, delaying reviews and perpetuating the issue. Solving this by predicting "likely high-quality" listings (e.g., via features like price, amenities, photos, host profile, or location data) enables the recommendation system to suggest them immediately, bridging the gap until organic reviews accumulate
+- How airbnb address the cold start problem?
+  - [New listing promotion](https://www.airbnb.co.uk/help/article/3421): When you have a new listing, you can offer a 20% discount on your first 3 bookings
+  - [How search works for recently activated listings](https://www.airbnb.com/help/article/39):
+    - To help hosts get started, the algorithm is designed to make sure new listings show up well in search results. New listings usually show up in search results within 24 hours, but in some cases they may take longer.
+  - airbnb team in 2020 achieve a increase of 14% in bookings for new listings changing their search ranking algorithm 
+    - In 2020, Airbnb's engineering team tackled the cold-start problem for new listings by developing a model that predicts missing engagement features (such as bookings or clicks) using data from similar listings in the same neighborhood. This approach allowed new listings to be ranked more effectively in search results, as traditional algorithms often deprioritized them due to a lack of historical data, creating a feedback loop of low visibility and fewer bookings. By imputing these features based on geographic and attribute similarities (e.g., guest capacity or time windows), the updated ranking system boosted bookings for new listings by 14%, demonstrating the value of proactive quality inference to accelerate their integration into the platform.
+    - [Improving Deep Learning For Airbnb Search](https://scispace.com/pdf/improving-deep-learning-for-airbnb-search-4zh9c6wff8.pdf)
+  - ALTHOUGH it seems they prefer now to suggest they prioritize more reliable listings likely because they have more chances to be booked again: The main challenge you've highlighted is real: a listing with no reviews has a harder time earning trust from potential guests. What's crucial for 2025 is that the way Airbnb's system treats new listings appears to have evolved. A key update from 2025 suggests that the traditional "new listing boost"—a period where new listings were given heightened visibility in search results to help them get started—has reportedly ended. Instead of an automatic boost, new listings now start with a baseline position and must earn better visibility by demonstrating strong performance. Airbnb's algorithm is said to prioritize listings that are likely to be booked and to receive a 5-star review . This means that from the very first booking, your performance directly influences your search ranking.
+    - https://azdesertvacations.com/airbnb-algorithm-update-2025-what-phoenix-hosts-need-to-know-now/ 
+- [MA DA QUESTO ARTICOLO TOP](https://www.rentalscaleup.com/how-to-rank-higher-on-airbnb-booking-probability-and-guest-satisfaction-now-drive-visibility/)
+  - At the 2025 Airbnb Professional Host Summit, the company revealed that listings now rank based on two key signals: how likely a guest is to book, and how likely they are to leave a 5-star review. This marks a major shift toward guest satisfaction as a core ranking factor. Airbnb’s algorithm now uses over 800 signals—including listing accuracy, cleanliness, communication, and even the likelihood of support issues, to predict the outcome of a stay before it happens. For property managers, this means maintaining visual quality, consistent operations, and perceived value is more important than ever, as these elements now directly impact visibility and bookings.
+  - it's all based on ranking search algorithm! Airbnb’s search results are dynamic. Every time a guest searches, the algorithm evaluates the full inventory in milliseconds to decide which listings to show and in what order. Your ranking isn’t fixed; it changes with each search, guest profile, and market context.
+- - WHY AIRBNB COULD BE INTERESTED IN THIS?
+  - create new feature for its ranking searching algorithm - probably they already have it ;)
+  -   Your model, which classifies new listings as "High-Potential" (top 25% ratings, ~4.7/5) or "Standard" based on features like price, amenities, and location, directly complements Airbnb's strategy by providing an early quality signal without relying on reviews. This is useful because cold-start listings represent a key growth area but suffer from under-recommendation—your classifier could identify trustworthy ones immediately, helping prioritize them in searches or promotions to break the visibility barrier.
+In practice, integrating your model could enhance Airbnb's ranking by feeding predicted potential as an input feature (e.g., boosting high-potential new listings in results), potentially replicating or exceeding the 14% booking uplift by focusing on quality proxies rather than just neighborhood averages.
   - Enhancing User Trust and Experience: Guests rely on reviews for confidence in bookings, avoiding risks like poor quality or scams. Without cold-start predictions, new listings are deprioritized, limiting options and frustrating users who want fresh, unique stays
   - Encouraging Host Participation and Platform Growth: New hosts face a "chicken-and-egg" dilemma—low bookings without reviews, leading to high exit rates (e.g., twice as likely for unreviewed listings). By recommending predicted high-quality new listings, Airbnb can accelerate their bookings, helping hosts build reviews faster. This is vital for scaling supply, especially in emerging markets or post-regulation environments like NYC's Local Law 18, where inventory dropped sharply.
   - It aligns with broader goals like personalized onboarding or location retrieval, where cold-starts cause suboptimal results. In competitive landscapes, this prevents rivals (e.g., Vrbo, Booking.com) from outpacing Airbnb in inventory freshness.
   - Increased Revenue and Bookings: Unreviewed listings see 24% lower bookings and 25% less revenue, contributing to significant welfare losses (estimated at millions platform-wide). Policies like fee waivers for new listings (to encourage trials) could boost occupancy by 6-7%, listings by up to 7%, and overall revenue by 0.2-4.4% through better matching and variety. For Airbnb, this means faster monetization of new inventory, higher transaction volumes (e.g., billions in bookings), and premium pricing potential as networks densify.
-Improved User and Host Retention: Better recommendations reduce churn (e.g., guests abandoning due to limited options) and enhance satisfaction via "magic moments" (positive surprises from high-quality new finds). Hosts benefit from quicker reviews and earnings, lowering exit rates and encouraging upgrades (e.g., from airbeds to luxury stays), cycling into stronger networks. This fosters loyalty, viral growth (e.g., referrals), and higher Net Promoter Scores.
+  - Improved User and Host Retention: Better recommendations reduce churn (e.g., guests abandoning due to limited options) and enhance satisfaction via "magic moments" (positive surprises from high-quality new finds). Hosts benefit from quicker reviews and earnings, lowering exit rates and encouraging upgrades (e.g., from airbeds to luxury stays), cycling into stronger networks. This fosters loyalty, viral growth (e.g., referrals), and higher Net Promoter Scores.
 Competitive Moat and Market Expansion: Solving cold-starts builds defensibility—hard for clones to replicate dense, quality networks (e.g., Airbnb outlasted Wimdu by focusing on superior experiences). It enables faster international scaling (e.g., bootstrapping Europe via events/subsidies) and entry into niches, increasing consumer surplus (up to 6%) through variety and efficient learning. Overall welfare gains (4-5%) stem from social learning (up to 5% of consumer benefits), price reductions, and more listings.
 - FONTI :
   - https://andrewchen.com/wp-content/uploads/2022/01/ColdStartProb_9780062969743_AS0928_cc20_Final.pdf
@@ -88,6 +99,13 @@ Pros and Cons of Approaches:
     - Sample Impact: Compute % listings retained at thresholds (e.g., ≥3: ~80%, ≥10: ~50%).
     - Decision Criteria: If variance drops sharply after 5 reviews (e.g., var <0.1), stick with ≥5. If high variance persists to 10, increase. Retain ≥50-70% samples (~6,000-8,000) for robust training.
     - STEP 3: OPTIONAL tune this choice as an hyperparameter
+    - CONSEQUENCE: i will use for prospective evaluation all listings that had less than 5 reviews
+      - For listings with 1-4 reviews, the model can still generate a prediction of "long-term potential" (e.g., likely to reach top 25% ratings once more reviews accumulate), treating them similarly to zero-review cold-starts. This is useful because low-review listings often have volatile averages (e.g., one bad review can skew them down), so your feature-based estimate provides a more stable forecast.
+      - Real-World Applicability for Airbnb: Listings with 1-4 reviews are in a "warm-start" phase—they have some signal but not enough for confident recommendations. Your model could help Airbnb's engine prioritize these in searches or promotions, accelerating bookings and review accumulation. For example, if a listing has 2 reviews averaging 4.0 (potentially noisy), but your model predicts high potential based on strong features (e.g., prime location, many amenities), it could boost visibility without relying on the immature rating. This aligns with Airbnb's goals of addressing entry barriers for new hosts and improving recommendation diversity.
+      - When It Might Not Make Sense: If the few existing reviews are already indicative (e.g., consistent 5.0s), relying on them directly (or blending with model predictions) might be better than pure feature-based forecasting. 
+   
+## Others
+- dataset for training must not include any information about reviews since the aim is to predict overall review score for listings without enough review
 
 # DATA COLLECTION
 - after a brief research i found out that i could collect data for this project from Kaggle and from Inside Airbnb
@@ -126,5 +144,10 @@ Why Not Other Years?:
 ## Explore Data to Confirm/Refine NUMBER OF REVIEWS THRESHOLD CHOICE
 see data requirement section
 
-
-
+# model evaluation
+- check prediction on listings with 1-4 reviews and comment
+# MODEL MONITORING
+## PROSPECTIVE EVALUATION
+- different evaluation : the zero review listings and the 1-4 review listings
+# Future development
+extend prediction to warm-start cases using the score reviews already submitted
