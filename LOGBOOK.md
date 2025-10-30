@@ -65,7 +65,7 @@ Pros and Cons of Approaches:
 
 
 ## QUALI ANNI?
-- Idea is that i predict future average review score and then i look at future data to see how much error i made
+- Idea is that i predict future average review score and then i look at future data to see how much error i made (prospective evaluation)
 
 
 ## My CHOICE
@@ -104,11 +104,15 @@ Pros and Cons of Approaches:
 - after a brief research i found out that i could collect data for this project from Kaggle and from Inside Airbnb
 - I downloaded different snapshots of Airbnb listings in NYC: 2022-2023-2024-2025
   - [Kaggle - June 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
-  - 2023???
+  - [KAGGLE - March 2023 data](https://www.kaggle.com/datasets/kusnetkozme/new-york-city-airbnb-dataset)
   - [Inside Airbnb - November 2024 data](https://insideairbnb.com/get-the-data/)
   - [Inside Airbnb - OCTOBER 2025 data](https://insideairbnb.com/get-the-data/)
  
-- created virtual environment for python for this project
+- created python virtual environment for this project
+
+# DATA UNDERSTANDING/EDA
+
+## CHECKS FOR DECIDING WHICH DATA USE
 - CHECKS (attrition,...) to decide which year choose
 
 - ANNO: june 2022 e check su october 2025
@@ -134,11 +138,14 @@ Why Not Other Years?:
 2020 (March): COVID lockdown ; ~42k listings but sparse activity (low number_of_reviews). ~4-5 year gap = higher attrition (~70-80%).
 2021 (June): Recovery phase, ~40k listings, but still volatile (fewer reviews than 2022). Similar ~4-year gap = slightly worse attrition.
 2024-2025 (Nov/Dec/Jan): Post-LL18, ~10k-11k listings, skewed to long-term (14.4% short-term). Too small for robust training; short gaps (~1-3 months) yield sparse reviews (~1-2 per listing).
-# DATA PREPARATION
-- USARE geojson per mappe
 
-## Explore Data to Confirm/Refine NUMBER OF REVIEWS THRESHOLD CHOICE
-see data requirement section
+
+## EDA
+- Explore Data to Confirm/Refine NUMBER OF REVIEWS THRESHOLD CHOICE --> see data requirement section
+- look at review score distribution in general, and with NUMBER OF REVIEWS THRESHOLD CHOICE
+- USARE geojson per mappe
+# DATA PREPARATION
+
 
 # model evaluation
 - check prediction on listings with 1-4 reviews and comment
