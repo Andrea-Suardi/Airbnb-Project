@@ -1,4 +1,4 @@
-# Airbnb Apartment Quality Predictor
+# Cold-Start Airbnb Listing Predictor
 This project develops a machine learning classifier to address the cold-start problem for Airbnb listings, predicting whether new NYC properties (from June 2022 data) are "High-Potential" (top 25% ratings and ≥4.9 to align with Guest Favorite badge criteria) or "Standard" using features like price, amenities, and location, optimized for precision to support trustworthy recommendations. Model performance is validated internally and through prospective evaluation on persistent listings in 2025 data.
 
 ## Project Objective
