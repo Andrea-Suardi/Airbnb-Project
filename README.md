@@ -1,33 +1,28 @@
 # Airbnb Apartment Quality Predictor
-**(Zero-Review Suggestion Engine)**  
-A Data Science and Machine Learning project aimed at identifying newly posted Airbnb listings that are most likely to receive above-average guest evaluations. The model leverages property characteristics to proactively suggest high-quality accommodations to users when no reviews are yet available.
+This project develops a machine learning classifier to address the cold-start problem for Airbnb listings, predicting whether new NYC properties (from June 2022 data) are "High-Potential" (top 25% ratings and ≥4.9 to align with Guest Favorite badge criteria) or "Standard" using features like price, amenities, and location, optimized for precision to support trustworthy recommendations. Model performance is validated internally and through prospective evaluation on persistent listings in 2025 data.
 
 ## Project Objective
 
-- **Solve the "Cold-Start" Problem:** Develop a machine learning model capable of accurately assessing the likely quality of a newly listed Airbnb apartment (the "cold-start" problem) before it has accumulated any guest reviews.
-
-- **Predict High Evaluation:** Classify new listings as either "High-Potential" or "Standard" based on the probability of achieving an above-average overall rating.
-
-- **Identify Key Success Drivers:** Analyze and interpret which specific pre-review features are the strongest predictors of long-term guest satisfaction.
-
-- **Support Early Recommendations:** Create a predictive system that can be integrated into a recommendation engine to suggest likely high-quality, trustworthy listings to users immediately upon posting.
-
-- **Feature Engineering and Modeling:** Demonstrate a robust data science workflow, including data cleaning, feature engineering from raw listing data, and comparative analysis of various classification algorithms.
+- **Address Cold-Start Challenge**: Build a machine learning model to predict the potential quality of new Airbnb listings without reviews, enabling early assessment and recommendations.
+- **Binary Classification**: Categorize listings as "High-Potential" or "Standard" based on the likelihood of achieving top ratings (top 25% and ≥4.9, aligned with Guest Favorite badge criteria).
+- **Uncover Key Predictors**: Identify and interpret critical features (e.g., price, amenities, location) driving long-term guest satisfaction through feature importance analysis.
+- **Enhance Recommendation Systems**: Develop a system integrable into Airbnb's engine to promote trustworthy new listings, boosting bookings and user trust.
+- **End-to-End Workflow**: Showcase a complete data science pipeline, from data preprocessing and feature engineering to model comparison and temporal validation using NYC data from 2022 with evaluation on 2025 outcomes.
 
 ## Tools & Technologies
 
-- Python (pandas, numpy, matplotlib, seaborn, scikit-learn)
+- Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-Learn)
 - Jupyter Notebook
 - Generative AI (Grok, Gemini, DeepSeek, Claude)
 
 ## Dataset
 
-- New york city June 2022 for MODEL DEVELOPMENT
+- New york city June 2022 for model development
   - [Kaggle - 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
 - October 2025 for Prospective evaluation
-  - [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/) 
-- Number of rows/columns
-- What kind of data it contains
+  - [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/)
+- Rows/columns:
+- Features:
 
 ## Analysis Summary
 
@@ -40,8 +35,6 @@ Write a few bullet points or short paragraphs about what you discovered:
 
 - data/ # Raw or cleaned data files
 - notebooks/ # Jupyter notebooks with code
-- images/ # Visualizations (optional)
-- LICENSE
 - README.md
 
 
