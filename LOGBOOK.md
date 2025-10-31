@@ -113,7 +113,13 @@ Pros and Cons of Approaches:
 # DATA UNDERSTANDING/EDA
 
 ## CHECKS FOR DECIDING WHICH DATA USE
-- CHECKS (attrition,...) to decide which year choose
+- CHECKS:
+  - compatibility
+    - same columns?
+    - attrition rate?
+   
+  - Data Volume and Quality Check (For Training Suitability):
+    - Verify listings count, reviewed listings (≥5 reviews for labels), zero-review (for predictions), and missing values in key features (price, amenities, neighborhood_group).
 
 - ANNO: june 2022 e check su october 2025
   - WHY?
@@ -140,15 +146,21 @@ Why Not Other Years?:
 2024-2025 (Nov/Dec/Jan): Post-LL18, ~10k-11k listings, skewed to long-term (14.4% short-term). Too small for robust training; short gaps (~1-3 months) yield sparse reviews (~1-2 per listing).
 
 
+
+# DATA PREPARATION
 ## EDA
 - Explore Data to Confirm/Refine NUMBER OF REVIEWS THRESHOLD CHOICE --> see data requirement section
 - look at review score distribution in general, and with NUMBER OF REVIEWS THRESHOLD CHOICE
 - USARE geojson per mappe
-# DATA PREPARATION
-
 
 # model evaluation
 - check prediction on listings with 1-4 reviews and comment
+
+# MODEL INTERPRETATION
+- Uncover Key Predictors: Identify and interpret critical features (e.g., price, amenities, location) driving long-term guest satisfaction through feature importance analysis.
+# model deployment
+Enhance Recommendation Systems: Develop a system integrable into Airbnb's engine to promote trustworthy new listings, boosting bookings and user trust.
+
 # MODEL MONITORING
 ## PROSPECTIVE EVALUATION
 - different evaluation : the zero review listings and the 1-4 review listings
