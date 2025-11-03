@@ -116,36 +116,31 @@ Pros and Cons of Approaches:
 - CHECKS:
   - compatibility
     - same columns?
+      - there are lot of differences between 2024 data and others: 34 variables in 2024 that are not in others and 19 in others that are not in 2024. three of these differences are for different names.
+      - All columns in 2022 data are also in 2023 and 2025 data. There a few columns in 2023 and 2025 that are not in 2022 but this is irrilevant,
     - attrition rate?
+      - 2022-2023 check: Persistent listings Percentage: 56.77%, Persistents: 10097
+      - 2022-2025:check Persistent listings Percentage: 52.41%, Persistents: 9321
+      - 2023-2025:check Persistent listings Percentage: 78.95%, Persistents: 15946    - 
    
   - Data Volume and Quality Check (For Training Suitability):
-    - Verify listings count, reviewed listings (≥5 reviews for labels), zero-review (for predictions), and missing values in key features (price, amenities, neighborhood_group).
+    - Verify listings count, reviewed listings (≥5 reviews for labels), and missing values in key features (price, amenities, neighborhood_group).
+    - 2022: check: Percentage of Listings with enough reviews: 47.54%, Listings with enough reviews: 19625
+    - 2023: check: Percentage of Listings with enough reviews: 53.79%, Listings with enough reviews: 17351
+    - MISSING VALUES:
+      - 2022 has less missings than 2023
 
-- ANNO: june 2022 e check su october 2025
-  - WHY?
-    - Attrition Rate between 2025 and 2022 of less than 5 reviews listings: 47.59% (Persistents: 9321 out of 17785 of 2022)
-    - Persistents that at 2025 have >4 reviews: 1423
-    - Avg reviews score for persistents in 2025: 4.8
    
-Why June 2022?:
+- FINAL CHOICE:
+  - exclude 2024 because there too many variable differences
+  - use 2022 for model development because it has less missing values in potential important features such as price/beds/bathrooms/bedrooms.
+  - use 2023 and 2025 data for prospective evaluation
+    - choosing 2022 we can have two more opportunities for prospective evaluation
+## other checks
+- for 2022 data there are 19625 listings with enough reviews out of 37410 total listings. we have 74 total variables (including everything)
+- Percentage of High Potential Listings: 22.60% ... so target has imbalanced distribution
 
-Volume: ~17,800 listings (inferred), ~3,600-5,400 zero-review (20-30%), ~9,000-12,000 reviewed (≥5 reviews, for training). Ample for 80/20 split or 5-fold CV.
-Pre-LL18: Captures robust short-term market (49.6% <30-day rentals), ideal for cold-start dynamics. Less COVID distortion than 2020/2021.
-Hindsight Fit: ~3-year gap to 2025 yields 1,423 validatables (likely 10-50 reviews each), balancing review accumulation with moderate drift. Better than short 2024-2025 gaps (fewer reviews, ~2-4 per listing).
-
-
-Why 2025 Hindsight?:
-- ma è giusto chiamarlo HINDsight? ---> no it's prospective evaluation!
-Latest snapshot (e.g., March/June/Sep 2025) maximizes reviews. 1,423 samples ensure reliable metrics. Use Sep 05 2024 as backup if 2025 data has issues (e.g., missing review_scores_rating).
-
-
-Why Not Other Years?:
-
-2020 (March): COVID lockdown ; ~42k listings but sparse activity (low number_of_reviews). ~4-5 year gap = higher attrition (~70-80%).
-2021 (June): Recovery phase, ~40k listings, but still volatile (fewer reviews than 2022). Similar ~4-year gap = slightly worse attrition.
-2024-2025 (Nov/Dec/Jan): Post-LL18, ~10k-11k listings, skewed to long-term (14.4% short-term). Too small for robust training; short gaps (~1-3 months) yield sparse reviews (~1-2 per listing).
-
-
+# MODEL DEVELOPMENT STEP 0
 
 # DATA PREPARATION
 ## EDA
