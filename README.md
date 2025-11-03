@@ -1,5 +1,5 @@
 # Cold-Start Airbnb Listing Predictor
-This project develops a machine learning classifier to address the cold-start problem for Airbnb listings, predicting whether new NYC properties (from June 2022 data) are "High-Potential" (top 25% ratings and ≥4.9 to align with Guest Favorite badge criteria) or "Standard" using features like price, amenities, and location, optimized for precision to support trustworthy recommendations. Model performance is validated internally and through prospective evaluation on persistent listings in 2025 data.
+This project develops a machine learning classifier to address the cold-start problem for Airbnb listings, predicting whether new NYC properties (from June 2022 data) are "High-Potential" (top 25% ratings and ≥4.9 to align with Guest Favorite badge criteria) or "Standard" using features like price, amenities, and location, optimized for precision to support trustworthy recommendations. Model performance is validated internally and through prospective evaluation on persistent listings in 2023 and 2025 data.
 
 ## Project Objective
 
@@ -7,7 +7,7 @@ This project develops a machine learning classifier to address the cold-start pr
 - **Binary Classification**: Categorize listings as "High-Potential" or "Standard" based on the likelihood of achieving top ratings (top 25% and ≥4.9, aligned with Guest Favorite badge criteria).
 - **Uncover Key Predictors**: Identify and interpret critical features (e.g., price, amenities, location) driving long-term guest satisfaction through feature importance analysis.
 - **Enhance Recommendation Systems**: Develop a system integrable into Airbnb's engine to promote trustworthy new listings, boosting bookings and user trust.
-- **End-to-End Workflow**: Showcase a complete data science pipeline, from data preprocessing and feature engineering to model comparison and temporal validation using NYC data from 2022 with evaluation on 2025 outcomes.
+- **End-to-End Workflow**: Showcase a complete data science pipeline, from data preprocessing and feature engineering to model comparison and temporal validation using NYC data from 2022 with evaluation on 2023 and 2025 outcomes.
 
 ## Tools & Technologies
 
@@ -17,12 +17,12 @@ This project develops a machine learning classifier to address the cold-start pr
 
 ## Dataset
 
-- New york city June 2022 for model development
+- New York City June 2022 data for model development:
   - [Kaggle - 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
-- October 2025 for Prospective evaluation
+- New York City March 2023 data for prospective evaluation:
+  [KAGGLE - March 2023 data](https://www.kaggle.com/datasets/kusnetkozme/new-york-city-airbnb-dataset)
+- New York City October 2025 data for prospective evaluation:
   - [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/)
-- Rows/columns:
-- Features:
 
 ## Analysis Summary
 
