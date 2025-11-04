@@ -33,8 +33,9 @@ Write a few bullet points or short paragraphs about what you discovered:
 
 ## Repository Structure
 
-- data/ # Raw or cleaned data files
-- notebooks/ # Jupyter notebooks with code
+- data/ - Raw or cleaned data files
+- notebooks/ - Jupyter notebooks with Python code
+- LOGBOOK.md - Logbook of the project (in progress)
 - README.md
 
 
