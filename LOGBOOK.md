@@ -144,21 +144,22 @@ Pros and Cons of Approaches:
 ## CHOICE OF WORKFLOW
 - Train/Test split (80/20)
 - 5-fold stratified CV on train for tuning hyperparameters and decision rule.
-  - hyperparameters TUNING is done on BRIER SCORE (common formulation).
+  - hyperparameters TUNING is done with log-loss metric
   - use 5-fold stratified CV also for choosing then best model.
 - Refit: best pipeline on full train.
 - use test set to estimate generalization error
 - REASONS?
   - Train/Test Split (80/20): This split allocates sufficient data for training (~15,700 observations from 19,625) to learn patterns while holding out a meaningful test set (~3,925) for unbiased evaluation. It's a common ratio for medium-sized datasets like this (balances overfitting risk with test reliability), and stratification preserves class imbalance ratios, preventing skewed splits in your ~25% High-Potential minority class.
   - 5-Fold Stratified CV on Train for Tuning Hyperparameters and Decision Rule: Stratified 5-fold CV ensures balanced folds (maintaining ~25% High-Potential per fold), reducing variance in estimates for imbalanced data. 5 folds is efficient (trains on 80% of train data per fold, ~12,560 samples) and sufficient for hyperparameter tuning/decision rule (e.g., threshold on probabilities) without excessive compute, while stratification mitigates bias from class skew—standard for classification tasks per scikit-learn guidelines.
-  - Hyperparameter Tuning on Brier Score (Common Formulation): Brier score (mean squared error of probabilities vs. true labels) is ideal for probabilistic calibration in imbalanced settings, as it penalizes overconfident wrong predictions and rewards well-calibrated outputs—crucial for your precision-optimized model (e.g., reliable probabilities for threshold tuning). It's commonly used in ranking/recommendation systems (e.g., Airbnb's similar probabilistic forecasts) over accuracy, as it focuses on prediction quality rather than hard classifications.
+  - Hyperparameter Tuning on Log-Loss: It is a proper scoring rule that rewards well-calibrated predictions, making it ideal for subsequent threshold tuning to optimize precision (the key metric)
   - Refit: Best Pipeline on Full Train: Refitting the optimal model/pipeline (e.g., tuned XGBoost) on the entire train set maximizes learning from all available data (~15,700 samples), improving stability and performance without leakage (as tuning/selection used CV). This is a standard practice (e.g., in Kaggle competitions) to squeeze out final gains before hold-out evaluation.
 Finally Use Test Set to Estimate Generalization Error: The hold-out test set (~3,925 samples) provides an unbiased estimate of out-of-sample performance (e.g., precision ~0.75), simulating real-world deployment on unseen data. This avoids CV optimism bias
 - Use 5-Fold Stratified CV Also for Choosing the Best Model: Applying the same CV setup for model selection (e.g., comparing Logistic Regression, Random Forest, XGBoost) ensures consistent, unbiased comparison across candidates, avoiding overfitting to a single split.
 ## CHOICE OF MODEL CLASSES TO TRAIN
+
 ## CHOICE OF HOW TO ADDRESS CLASS IMBALANCE
 - stratified cv split to avoid folds with fewer high potential listings
-- Handle imbalance with class weights or SMOTE.
+- Handle imbalance with class weights - so we will use weighted log-loss for hyperparameter tuning
 
 
 # DATA PREPARATION
