@@ -146,6 +146,7 @@ Pros and Cons of Approaches:
 - 5-fold stratified CV on train for tuning hyperparameters and decision rule.
   - hyperparameters TUNING is done with log-loss metric
   - use 5-fold stratified CV also for choosing then best model.
+  - see if best model meet the precision CV target that i choose to be around 0.70-0.80 so that model predicts correctly on average 70-80% of high potential listing
 - Refit: best pipeline on full train.
 - use test set to estimate generalization error
 - REASONS?
@@ -156,7 +157,13 @@ Pros and Cons of Approaches:
 Finally Use Test Set to Estimate Generalization Error: The hold-out test set (~3,925 samples) provides an unbiased estimate of out-of-sample performance (e.g., precision ~0.75), simulating real-world deployment on unseen data. This avoids CV optimism bias
 - Use 5-Fold Stratified CV Also for Choosing the Best Model: Applying the same CV setup for model selection (e.g., comparing Logistic Regression, Random Forest, XGBoost) ensures consistent, unbiased comparison across candidates, avoiding overfitting to a single split.
 ## CHOICE OF MODEL CLASSES TO TRAIN
-
+- Elastic Net LOGISTIC REGRESSION:
+  - As a simple, interpretable baseline, handles imbalance well with class weights; it serves as a benchmark to compare more complex models, often strong when relationships are mostly linear/additive (???)
+- XGBoost (Gradient Boosting Family):
+  - Ideal for imbalanced classification with its scale_pos_weight parameter and regularization to prevent overfitting, it often outperforms on tabular data (???)
+  - If you have many high-cardinality categoricals, favor CatBoost inside family #2. If most features are numeric, LightGBM/XGBoost are great.
+- SVM (start with linear SVM; consider RBF SVM if signal is nonlinear)
+  - Different inductive bias from trees and linear models (which one??) → useful diversity. Strong margin-based ranking → often better precision at the top once you tune the decision threshold (prove??) how does it handle imbalance?
 ## CHOICE OF HOW TO ADDRESS CLASS IMBALANCE
 - stratified cv split to avoid folds with fewer high potential listings
 - Handle imbalance with class weights - so we will use weighted log-loss for hyperparameter tuning
