@@ -53,7 +53,9 @@ Competitive Moat and Market Expansion: Solving cold-starts builds defensibility�
   - I choose precision for these reasons:
     - The recommendation engine prioritizes user trust—recommending a low-quality listing (false positive) risks negative guest experiences, reducing bookings and platform reputation. Precision ensures most predicted High-Potential listings are truly high-quality (>4.7, top 25%). Research on platforms like Airbnb emphasizes minimizing bad recommendations to maintain trust (e.g., avoiding “zeroes” or poor matches).
     -   Precision is intuitive (“X% of recommended new listings were high-quality”) and ties directly to business value (trustworthy recommendations drive bookings).
-
+-**define deployment constraints**:
+  - DISCRIMINATION: since i chose precision as success metric, it will be important for the model to discriminate well between high potential and standard listings
+  - INTERPRETABILITY (optional but not required): it would be interesting to have some clues about which features influence most the future review average score
 - **EXTRA**: if i find data of different periods i can use them to check if my predictions were correct (prospective evaluation)
 # DATA REQUIREMENT
 ## QUALI E QUANTE CITTA?
@@ -104,10 +106,13 @@ Pros and Cons of Approaches:
 - after a brief research i found out that i could collect data for this project from Kaggle and from Inside Airbnb
 - I downloaded different snapshots of Airbnb listings in NYC: 2022-2023-2024-2025
   - [Kaggle - June 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
-  - [KAGGLE - March 2023 data](https://www.kaggle.com/datasets/kusnetkozme/new-york-city-airbnb-dataset)
+  - [Kaggle - 2023 data](https://www.kaggle.com/datasets/godofoutcasts/new-york-city-airbnb-2023-public-data/)
   - [Inside Airbnb - November 2024 data](https://insideairbnb.com/get-the-data/)
   - [Inside Airbnb - OCTOBER 2025 data](https://insideairbnb.com/get-the-data/)
- 
+ - License of data
+   - Data from Inside Airbnb is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
+   - Kaggle June 2022 data were taken from Inside Airbnb so they are under CC BY 4.0 license as well
+   - Kaggle March 2023 data has [CC0 1.0 Universal license](https://creativecommons.org/publicdomain/zero/1.0/)
 - created python virtual environment for this project
 
 # DATA UNDERSTANDING
@@ -136,9 +141,30 @@ Pros and Cons of Approaches:
   - use 2022 for model development because it has less missing values in potential important features such as price/beds/bathrooms/bedrooms.
   - use 2023 and 2025 data for prospective evaluation
     - choosing 2022 we can have two more opportunities for prospective evaluation
-## other checks
-- for 2022 data there are 19625 listings with enough reviews out of 37410 total listings. we have 74 total variables (including everything)
+   
+
+## 2022 data overview
+- for 2022 data there are 19625 listings with enough reviews out of 37410 total listings. 
 - Percentage of High Potential Listings: 22.60% ... so target has imbalanced distribution
+- To understand each variable I read these sources:
+  - [Inside Airbnb Data Assumptions](https://insideairbnb.com/data-assumptions/)
+  - [Inside Airbnb Data Dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit?gid=1322284596#gid=1322284596)
+- We have a total of 74 variables:
+  - Target Variable (1): One variable is designated as the target for the analysis (a rating score).
+  - Feature Variables (48): The remaining variables are categorized as follows:
+    - Numerical Variables (24): A large number of variables are numerical, covering various host and listing metrics like counts, rates, prices, and availability.
+    - Spatial Variables (7): Seven variables provide location information, including coordinates and different levels of neighborhood detail.
+    - Binary Variables (5): Five variables are binary (Yes/No flags) describing host status and listing features.
+    - Text Variables (4): Four variables contain free-form text like names and descriptions.
+    - Nominal Variables (3): Three variables are nominal categories, including property and room type, with one having many unique values.
+    - Mixed Variables (3): Three variables contain mixed data types, such as bathroom descriptions and lists of amenities.
+    - Date Variable (1): One variable tracks a key date (when the host joined).
+    - Ordinal Variable (1): One variable is ordinal (ordered categories), describing host response time.
+  - Variables likely to be Removed (25):
+    - Useless Variables (11): Eleven variables are considered redundant or uninformative (like various IDs and URLs).
+    - Completely Missing Variables (2): Two variables are fully missing and will be excluded.
+    - Leaked Variables (12): Nine variables are review-related statistics that are typically removed because they would improperly "leak" future information into the model's training process.
+
 
 # MODEL DEVELOPMENT STEP 0
 ## CHOICE OF WORKFLOW
