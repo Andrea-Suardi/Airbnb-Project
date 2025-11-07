@@ -19,8 +19,8 @@ This project develops a machine learning classifier to address the cold-start pr
 
 - New York City June 2022 data for model development:
   - [Kaggle - 2022 data](https://www.kaggle.com/datasets/dominoweir/inside-airbnb-nyc)
-- New York City March 2023 data for prospective evaluation:
-  - [Kaggle - 2023 data](https://www.kaggle.com/datasets/kusnetkozme/new-york-city-airbnb-dataset)
+- New York City November 2024 data for prospective evaluation:
+  - [Kaggle - 2024 data](https://insideairbnb.com/get-the-data/)
 - New York City October 2025 data for prospective evaluation:
   - [Inside Airbnb - 2025 data](https://insideairbnb.com/get-the-data/)
 
