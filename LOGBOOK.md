@@ -120,18 +120,27 @@ Pros and Cons of Approaches:
 ## CHECKS FOR DECIDING WHICH DATA USE
 - CHECKS:
   - compatibility
+    - shapes:
+      - 2022 shape: (37410, 74)
+      - 2023 shape: (19528, 89) # something strange ... it's also different file not .csv but .xlsx
+      - 2024 shape: (37548, 75)
+      - 2025 shape: (36111, 79)
     - same columns?
-      - there are lot of differences between 2024 data and others: 34 variables in 2024 that are not in others and 19 in others that are not in 2024. three of these differences are for different names.
-      - All columns in 2022 data are also in 2023 and 2025 data. There a few columns in 2023 and 2025 that are not in 2022 but this is irrilevant,
+      - there are lot of differences between 2023 data and others: 34 variables in 2023 that are not in others and 19 in others that are not in 2023. three of these differences are for different names.
+      - All columns in 2022 data are also in 2024 and 2025 data. There a few columns in 2024 and 2025 that are not in 2022 but this is irrilevant
     - attrition rate?
-      - 2022-2023 check: Persistent listings Percentage: 56.77%, Persistents: 10097
-      - 2022-2025:check Persistent listings Percentage: 52.41%, Persistents: 9321
-      - 2023-2025:check Persistent listings Percentage: 78.95%, Persistents: 15946    - 
+      -   2022-2023:check Persistent listings Percentage: 0.01%, Persistents: 1
+      -   2022-2024:check Persistent listings Percentage: 8.55%, Persistents: 1521
+      -   2022-2025:check Persistent listings Percentage: 8.00%, Persistents: 1423
+      -   2023-2024:check Persistent listings Percentage: 2.89%, Persistents: 283
+      -   2023-2025:check Persistent listings Percentage: 2.72%, Persistents: 266
+       
    
   - Data Volume and Quality Check (For Training Suitability):
     - Verify listings count, reviewed listings (≥5 reviews for labels), and missing values in key features (price, amenities, neighborhood_group).
-    - 2022: check: Percentage of Listings with enough reviews: 47.54%, Listings with enough reviews: 19625
-    - 2023: check: Percentage of Listings with enough reviews: 53.79%, Listings with enough reviews: 17351
+    - 2022 check: Percentage of Listings with enough reviews: 47.54%, Listings with enough reviews: 19625
+    - 2023 check: Percentage of Listings with enough reviews: 50.13%, Listings with enough reviews: 9738
+    - 2024 check: Percentage of Listings with enough reviews: 53.79%, Listings with enough reviews: 17351
     - MISSING VALUES:
       - 2022 has less missings than 2023
 
